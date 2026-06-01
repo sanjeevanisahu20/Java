@@ -4,7 +4,9 @@ public class ContainerWithMostWater {
     static void main() {
         System.out.println("Hello");
         int arr[] = new int[]{3, 1, 2, 4, 5};
-        int result = getMostWater(arr);
+        int arr1[] = new int[]{2, 1, 8, 6, 4, 6, 5, 5};
+        //int result = getMostWater(arr);
+        int result =  getMostWaterWithTwoPointer(arr1);
         System.out.println(result);
     }
 
@@ -29,6 +31,31 @@ public class ContainerWithMostWater {
 
             }
         }
+        //0, 1, 2, 3, 4
+        //3, 1, 2, 4, 5}
+      /*  System.out.println("maxInd : "+maxInd+" secInd : "+secInd+" secMaxVal : "+secMaxVal+" maxVal : "+maxVal);
+        sum = (maxInd-secInd) * secMaxVal;*/
+        return sum;
+    }
+
+    public static Integer getMostWaterWithTwoPointer(int[] arr){
+        int sum=0;
+        int width=0;
+        int dis=0;
+        int left=0,right=arr.length-1;
+        while(right>left){
+            width= right-left;
+            dis = Math.min(arr[left],arr[right]);
+            if(sum<dis*width){
+                sum=dis*width;
+            }
+            if(arr[left]<arr[right]){
+                 ++left;
+            }else{
+                --right;
+            }
+        }
+
         //0, 1, 2, 3, 4
         //3, 1, 2, 4, 5}
       /*  System.out.println("maxInd : "+maxInd+" secInd : "+secInd+" secMaxVal : "+secMaxVal+" maxVal : "+maxVal);
